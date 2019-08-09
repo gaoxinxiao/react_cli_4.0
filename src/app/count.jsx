@@ -1,18 +1,18 @@
 import React from 'react'
 
 
-class Login extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            count:0
-        }
+class Login extends React.Component {
+    state = {
+        count: 0
     }
-   
-    render(){
+    test = () => {
+        console.log(123)
+    }
+    render() {
         return <div>
+            <span onClick={this.test.bind(this)}>test</span>
             <span>{this.state.count}</span>
-            <span onClick={()=> this.setState({count:this.state.count+=1})}>加加加</span>
+            <span onClick={() => this.setState({ count: this.state.count += 1 })}>加加加</span>
         </div>
     }
 }

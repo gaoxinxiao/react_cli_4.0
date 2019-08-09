@@ -1,5 +1,9 @@
-/*
-* @desc 静态公共资源打包配置
+
+/**
+ * @author 高 (https://github.com/gaoxinxiao)
+ * @email 18210833386@163.com
+ * @create date 2019-8-9 
+ * @desc 静态公共资源打包配置
 */
 
 const path = require('path')

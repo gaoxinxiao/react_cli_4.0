@@ -33,16 +33,16 @@ function renderWithHotReload(Router) {
 
 
 
-// const app = () =>{
-//     console.log('wmh')
-// }
+const app = () =>{
+    console.log('wmh')
+}
 
 
-// function* fnGxx(){   // 定义一个Generator函数
-//     yield 'hello';
-//     yield 'world';
-//     return 'end';
-// }
-// console.log(fnGxx())
+function* fnGxx(){   // 定义一个Generator函数
+    yield 'hello';
+    yield 'world';
+    return 'end';
+}
+console.log(fnGxx())
 
-// console.log(new Set([1,2,2,2,3]),'wwww')
+console.log(new Set([1,2,2,2,3]),'wwww')
