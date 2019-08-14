@@ -25,22 +25,22 @@ module.exports = merge(baseConfig, {
         splitChunks: {
             chunks: "all",
         },
-        usedExports: true
+        usedExports: true //清楚代码中无用的js 只支持import方式引入
     },
     plugins: [
-        // 清除无用 css
-        new PurifyCSS({
-            paths: glob.sync([
-                // 要做 CSS Tree Shaking 的路径文件
-                path.resolve(__dirname, '../src/*.html'),
-                path.resolve(__dirname, '../src/*.js')
-            ])
-        }),
         new AddAssetHtmlWebpackPlugin({
             filepath: path.resolve(__dirname, '../dll/lodash.dll.js') // 对应的 dll 文件路径
         }),
         new webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, '../dll/lodash-manifest.json')
         })
+        // 清除无用 css
+        // new PurifyCSS({
+        //     paths: glob.sync([
+        //         // 要做 CSS Tree Shaking 的路径文件
+        //         path.resolve(__dirname, '../src/*.html'),
+        //         path.resolve(__dirname, '../src/*.js')
+        //     ])
+        // }),
     ]
 })

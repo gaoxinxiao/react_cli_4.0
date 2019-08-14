@@ -7,11 +7,11 @@
 
 const path = require('path')
 const paths = require('./paths')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: paths.appSrc,
@@ -25,8 +25,18 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
+                include:paths.appSrc,
                 exclude: paths.appNodeModules,
                 loader: 'happypack/loader?id=happyBabel'
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                include:paths.appSrc,
+                exclude: paths.appNodeModules,
+                loader: 'awesome-typescript-loader',
+                options: {
+                    useCache: true
+                }
             },
             {
                 test: /\.(png|jpg|gif|jpeg|svg)$/,

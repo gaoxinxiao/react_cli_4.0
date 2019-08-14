@@ -1,7 +1,13 @@
 import React from 'react'
+import './style.scss'
 
 
-class Login extends React.Component {
+interface Props{
+    name: "aa" | "bb"
+}
+
+
+class Login extends React.Component<Props,any> {
     state = {
         count: 0
     }
@@ -10,12 +16,13 @@ class Login extends React.Component {
     }
     render() {
         return <div>
-            <span onClick={this.test.bind(this)}>test</span>
+            <span onClick={this.test.bind(this)} className='test'>test</span>
             <span>{this.state.count}</span>
             <span onClick={() => this.setState({ count: this.state.count += 1 })}>加加加</span>
         </div>
     }
 }
 
+<Login name="aa"></Login>
 
 export default Login
