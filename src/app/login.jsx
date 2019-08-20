@@ -6,6 +6,7 @@ class Login extends React.Component{
     render(){
 
         return <div>
+            <span className='iconfont circular' style={{color:"red"}}></span>
             <span>hello word</span>
             {
                  _.map([1,2,3],(item)=>{

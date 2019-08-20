@@ -51,10 +51,9 @@ module.exports = {
             {
                 test: /\.(eot|woff2?|ttf|svg)$/,
                 use: {
-                    loader: "url-loader",
+                    loader: "file-loader",
                     options: {
-                        outputPath: 'static/font/', // 图片输出的路径
-                        limit: 5000
+                        outputPath: 'static/font/'
                     }
                 }
             },

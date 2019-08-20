@@ -30,9 +30,6 @@ function renderWithHotReload(Router) {
 }
 
 
-
-
-
 const app = () =>{
     console.log('wmh')
 }

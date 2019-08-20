@@ -11,6 +11,7 @@ module.exports = {
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appPackageJson: resolveApp('package.json'),
+  appTsConfig: resolveApp('tsconfig.json'),
   appSrc: resolveApp(`src`),
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
