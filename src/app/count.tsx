@@ -3,7 +3,7 @@ import './style.scss'
 
 
 interface Props{
-    name: "aa" | "bb"
+    name: "aa" | "bb" 
 }
 
 

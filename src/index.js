@@ -28,21 +28,3 @@ function renderWithHotReload(Router) {
         document.getElementById("root")
     );
 }
-
-
-
-
-
-const app = () =>{
-    console.log('wmh')
-}
-
-
-function* fnGxx(){   // 定义一个Generator函数
-    yield 'hello';
-    yield 'world';
-    return 'end';
-}
-console.log(fnGxx())
-
-console.log(new Set([1,2,2,2,3]),'wwww')

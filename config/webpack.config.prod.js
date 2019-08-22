@@ -28,11 +28,17 @@ module.exports = merge(baseConfig, {
         usedExports: true //清楚代码中无用的js 只支持import方式引入
     },
     plugins: [
-        new AddAssetHtmlWebpackPlugin({
-            filepath: path.resolve(__dirname, '../dll/lodash.dll.js') // 对应的 dll 文件路径
-        }),
+        new AddAssetHtmlWebpackPlugin([
+            {
+                filepath: path.resolve(__dirname, '../dll/lodash.dll.js') // 对应的 dll 文件路径
+            },
+            {
+                filepath: path.resolve(__dirname, '../dll/antd.dll.js') // 对应的 dll 文件路径
+            }
+        ]),
         new webpack.DllReferencePlugin({
-            manifest: path.resolve(__dirname, '../dll/lodash-manifest.json')
+            manifest: path.resolve(__dirname, '../dll/lodash-manifest.json'),
+            manifest: path.resolve(__dirname, '../dll/antd-manifest.json')
         })
         // 清除无用 css
         // new PurifyCSS({

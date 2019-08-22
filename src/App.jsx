@@ -3,10 +3,15 @@ import { Switch, Route,Redirect } from 'react-router-dom'
 import routerConfig from './router/index'
 import './App.scss'
 
+class Loading extends React.Component{
+    render(){
+        return <div className='loading'>loading</div>
+    }
+}
 
 class App extends React.Component {
     render() {
-        return <Suspense fallback={<div>loading</div>}>
+        return <Suspense fallback={<Loading/>}>
             <Switch>
                 <Redirect exact from='/' to="/login" />
                 {
