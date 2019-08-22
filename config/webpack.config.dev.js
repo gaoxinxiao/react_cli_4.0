@@ -26,6 +26,7 @@ module.exports = merge(baseConfig, {
         contentBase: path.join(__dirname, "./build"),
         host: "0.0.0.0",
         port: 8080,
+        open:true,
         historyApiFallback: true,
         // proxy:{}
     },
