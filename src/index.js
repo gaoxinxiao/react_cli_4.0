@@ -18,32 +18,11 @@ if (module.hot) {
 }
 
 
-function renderWithHotReload(Router) {
+function renderWithHotReload(App) {
     ReactDOM.render(
         <AppContainer>
-            <HashRouter>
-                <Router />
-            </HashRouter>
+            <App />
         </AppContainer>,
         document.getElementById("root")
     );
-<<<<<<< HEAD
 }
-=======
-}
-
-
-const app = () =>{
-    console.log('wmh')
-}
-
-
-function* fnGxx(){   // 定义一个Generator函数
-    yield 'hello';
-    yield 'world';
-    return 'end';
-}
-console.log(fnGxx())
-
-console.log(new Set([1,2,2,2,3]),'wwww')
->>>>>>> 66f98618c0fe20268648c42a1caf1cac43a86822

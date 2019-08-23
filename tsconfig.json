@@ -2,12 +2,10 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "app": [
-        "app/*"
-      ],
-      "router": [
-        "router/*"
-      ]
+      "app": ["app/*"],
+      "components": ["components/*"],
+      "assets": ["assets/*"],
+      "router": ["router/*"]
     },
     "module": "esnext",
     "target": "es5",

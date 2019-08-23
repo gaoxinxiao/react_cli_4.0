@@ -6,12 +6,14 @@
 */
 
 const path = require('path')
+const paths = require('./paths')
 const webpack = require('webpack')
 const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')
 const PurifyCSS = require('purifycss-webpack')
 const glob = require('glob-all')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = merge(baseConfig, {
     mode: "production",
@@ -27,6 +29,32 @@ module.exports = merge(baseConfig, {
         },
         usedExports: true //清楚代码中无用的js 只支持import方式引入
     },
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss)$/,
+                include: paths.appSrc,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    'sass-loader',
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: [
+                                require("autoprefixer")
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     plugins: [
         new AddAssetHtmlWebpackPlugin([
             {
@@ -39,6 +67,10 @@ module.exports = merge(baseConfig, {
         new webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, '../dll/lodash-manifest.json'),
             manifest: path.resolve(__dirname, '../dll/antd-manifest.json')
+        }),
+        new MiniCssExtractPlugin({
+            filename: "static/css/[name].css",
+            chunkFilename: "static/css/[id].css"
         })
         // 清除无用 css
         // new PurifyCSS({

@@ -6,6 +6,7 @@
 */
 
 const path = require('path')
+const paths = require('./paths')
 const webpack = require('webpack')
 const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')
@@ -21,14 +22,39 @@ module.exports = merge(baseConfig, {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        inline:true,
+        inline: true,
         hot: true,
         contentBase: path.join(__dirname, "./build"),
         host: "0.0.0.0",
         port: 8080,
-        open:true,
         historyApiFallback: true,
-        // proxy:{}
+        // proxy:{}xcleaR
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss)$/,
+                include: paths.appSrc,
+                use: [
+                    'style-loader',
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    'sass-loader',
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: [
+                                require("autoprefixer")
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
