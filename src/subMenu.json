@@ -1,0 +1,28 @@
+{
+    "MenuList": [
+        {
+            "Key": "sub1",
+            "Name": "基础管理",
+            "Icon": "user",
+            "Children": []
+        },
+        {
+            "Key": "sub2",
+            "Name": "权限管理",
+            "Icon": "laptop",
+            "Children": []
+        },
+        {
+            "Key": "sub3",
+            "Name": "产品管理",
+            "Icon": "notification",
+            "Children": []
+        },
+        {
+            "Key": "sub4",
+            "Name": "银行管家",
+            "Icon": "align-right",
+            "Children": []
+        }
+    ]
+}

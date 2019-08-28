@@ -1,8 +1,10 @@
 import React from 'react'
 import _ from 'lodash'
 import { Button } from 'antd'
+import { observer } from 'mobx-react'
 
-class Login extends React.Component{
+@observer
+class Login extends React.Component<any,any>{
     render(){
         return <div>
             <span className='iconfont circular' style={{color:"red"}}></span>
@@ -17,4 +19,5 @@ class Login extends React.Component{
         </div>
     }
 }
+
 export default Login

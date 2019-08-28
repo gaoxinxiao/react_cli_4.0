@@ -36,7 +36,7 @@ module.exports = merge(baseConfig, {
                 test: /\.(css|scss)$/,
                 include: paths.appSrc,
                 use: [
-                    'style-loader',
+                   'style-loader',
                     {
                         loader: "css-loader",
                         options: {

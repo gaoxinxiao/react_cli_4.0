@@ -13,6 +13,7 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appTsConfig: resolveApp('tsconfig.json'),
   appSrc: resolveApp(`src`),
+  subMenu: resolveApp(`src/subMenu.json`),
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
 };

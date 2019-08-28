@@ -8,8 +8,7 @@
 const path = require('path')
 const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
-const rootDir = path.dirname(__dirname);
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     entry: paths.appSrc,
@@ -18,15 +17,11 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
-        alias: {
-            "src": path.resolve(rootDir, 'src'),
-            "app": path.resolve(rootDir, 'src','app'),
-            "components": path.resolve(rootDir, 'src', 'components'),
-            "utils": path.resolve(rootDir, 'src', 'utils'),
-            "api": path.resolve(rootDir, 'src', 'api'),
-            "assets": path.resolve(rootDir, 'src', 'assets'),
-            "router": path.resolve(rootDir, 'src', 'router')
-        }
+        plugins: [
+            new TsconfigPathsPlugin({
+                configFile: paths.appTsConfig //映射路径
+            })
+        ]
     },
     module: {
         rules: [

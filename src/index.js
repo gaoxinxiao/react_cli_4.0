@@ -1,28 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AppContainer } from "react-hot-loader";
-import { HashRouter } from "react-router-dom";
 import App from "./App.jsx";
 import './index.css'
+import {Provider} from 'mobx-react'
+import stores from 'store/store'
 
 
-/*初始化*/
-renderWithHotReload(App)
-
-/*热更新*/
-if (module.hot) {
-    module.hot.accept("./App.jsx", () => {
-        const Router = require("./App.jsx").default;
-        renderWithHotReload(Router);
-    });
-}
-
-
-function renderWithHotReload(App) {
-    ReactDOM.render(
-        <AppContainer>
-            <App />
-        </AppContainer>,
-        document.getElementById("root")
-    );
-}
+ReactDOM.render(
+    <Provider store={stores}><App /></Provider>,
+    document.getElementById("root")
+);

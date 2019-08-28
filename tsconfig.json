@@ -5,7 +5,8 @@
       "app": ["app/*"],
       "components": ["components/*"],
       "assets": ["assets/*"],
-      "router": ["router/*"]
+      "router": ["router/*"],
+      "store": ["store/*"]
     },
     "module": "esnext",
     "target": "es5",
@@ -16,6 +17,7 @@
     ],
     "allowJs": true,
     "jsx": "react",
+    "resolveJsonModule":true,
     "sourceMap": true,
     "downlevelIteration": true,
     "moduleResolution": "node",
@@ -26,7 +28,7 @@
     "allowUnreachableCode": true
   },
   "include": [
-    "src"
+    "src", "global.d.ts"
   ],
   "exclude": [
     "src/**/**.js"
