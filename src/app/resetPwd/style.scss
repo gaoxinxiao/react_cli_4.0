@@ -1,0 +1,18 @@
+.resetPwd{
+    .ant-row{
+        display: flex;
+    } 
+    .ant-form-item-label{
+        width: 100px;
+    }
+    .ant-form-item{
+        display: flex;
+        justify-content: center;
+    }
+    .resetPwd-form-button{
+        margin: 0 8px;
+    }
+    .resetPwd-form-button-confirm{
+        margin-left: 84px;
+    }
+}

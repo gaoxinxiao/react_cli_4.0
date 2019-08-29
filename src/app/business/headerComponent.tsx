@@ -22,10 +22,10 @@ class HeaderComponent extends React.Component<any, any>{
     render() {
         const menu = (
             <Menu>
-                <Menu.Item>
+                <Menu.Item onClick={()=> this.props.history.push('/resetPwd')}>
                     修改密码
                 </Menu.Item>
-                <Menu.Item>
+                <Menu.Item onClick={()=> this.props.history.replace('/login')}>
                     退出
                 </Menu.Item>
             </Menu>

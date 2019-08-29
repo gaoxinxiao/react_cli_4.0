@@ -10,6 +10,7 @@ import Login from 'app/login'
 import Business from 'app/business'
 import container from 'app/container'
 import Home from 'app/home'
+import ResetPwd from 'app/resetPwd'
 
 
 class Entrance extends React.Component<any, any>{
@@ -41,6 +42,11 @@ export default class RouterConfig extends React.Component<any, any>{
                 {
                     path: "/",
                     component: this.createCSSTransition(Home),
+                    exact: true
+                },
+                {
+                    path: "/resetPwd",
+                    component: this.createCSSTransition(ResetPwd),
                     exact: true
                 },
                 ...this.initRoutes(),
