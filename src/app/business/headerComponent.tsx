@@ -33,7 +33,7 @@ class HeaderComponent extends React.Component<any, any>{
         return <Header className="header">
             <Row>
                 <Col span={12} className='header_name'>
-                    <span className='header_name_logo'><img src={require('assets/images/logo.jpg')} alt="" /></span>
+                    <span className='header_name_logo'><img src={require('assets/images/logo2.png')} alt="" /></span>
                     <span className='header_name_title'>比财数据科技有限公司</span>
                 </Col>
                 <Col span={12} className='header_opertion'>

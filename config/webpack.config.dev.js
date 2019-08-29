@@ -23,7 +23,6 @@ module.exports = merge(baseConfig, {
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         inline: true,
-        hot: true,
         contentBase: path.join(__dirname, "./build"),
         host: "0.0.0.0",
         port: 8080,

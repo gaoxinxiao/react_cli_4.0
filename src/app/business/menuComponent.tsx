@@ -28,7 +28,7 @@ class MenuComponent extends React.Component<any, any>{
             defaultOpenKeys: [openKeys],
             defaultSelectedKeys: [selectedKeys]
         }
-        if (config.defaultOpenKeys[0]) {
+        if (Store.Menu.MenuList.length!=0) {
             return <Sider width={200} style={{ background: '#fff' }}>
                 <Menu
                     mode="inline"
@@ -54,6 +54,7 @@ class MenuComponent extends React.Component<any, any>{
             </Sider>
         }
         return null
+
     }
 }
 export default MenuComponent
