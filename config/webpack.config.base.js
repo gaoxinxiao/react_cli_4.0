@@ -26,6 +26,20 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                include: paths.appNodeModules,
+                exclude: paths.jsExclude,
+                use: [
+                    'cache-loader',
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }
+                ],
+            },
+            {
                 test: /\.(ts|tsx|js|jsx)$/,
                 include:paths.appSrc,
                 exclude: paths.appNodeModules,

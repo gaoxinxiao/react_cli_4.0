@@ -10,8 +10,6 @@ const paths = require('./paths')
 const webpack = require('webpack')
 const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')
-const PurifyCSS = require('purifycss-webpack')
-const glob = require('glob-all')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -72,13 +70,5 @@ module.exports = merge(baseConfig, {
             filename: "static/css/[name].css",
             chunkFilename: "static/css/[id].css"
         })
-        // 清除无用 css
-        // new PurifyCSS({
-        //     paths: glob.sync([
-        //         // 要做 CSS Tree Shaking 的路径文件
-        //         path.resolve(__dirname, '../src/*.html'),
-        //         path.resolve(__dirname, '../src/*.js')
-        //     ])
-        // }),
     ]
 })

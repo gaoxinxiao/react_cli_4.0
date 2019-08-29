@@ -14,7 +14,7 @@ module.exports = {
     entry: {
         // 定义程序中打包公共文件的入口文件vendor.js
         lodash: ['lodash'],
-        antd: ['antd'],
+        antd: ['antd']
     },
     output: {
         path: path.resolve(__dirname, '../dll'),
