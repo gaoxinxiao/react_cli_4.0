@@ -4,6 +4,8 @@ import { Button, Layout, Row, Col, Form, Icon, Input, notification } from 'antd'
 import { observer } from 'mobx-react'
 import './style.scss'
 import Http from 'service/http'
+import Store from 'store/store'
+
 
 @observer
 class Login extends React.Component<any, any>{
@@ -27,8 +29,14 @@ class Login extends React.Component<any, any>{
         notification.error(args);
     };
     async componentDidMount(){
-       const res = await Http.post('aaa').toPromise()
-       console.log(res)
+        try{
+            const res = await Http.post('aaa').toPromise()
+        }catch(e){
+            Store.Notification.error({
+                message:e.message,
+                description:e.url
+            })
+        }
     
     }
     render() {
