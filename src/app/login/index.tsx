@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { Button, Layout, Row, Col, Form, Icon, Input, notification } from 'antd'
 import { observer } from 'mobx-react'
 import './style.scss'
+import Http from 'service/http'
 
 @observer
 class Login extends React.Component<any, any>{
@@ -18,13 +19,18 @@ class Login extends React.Component<any, any>{
     };
     openNotification = () => {
         const args = {
-          message: '提示',
-          description:
-            '用户名或密码输入错误',
-          duration: 1,
+            message: '提示',
+            description:
+                '用户名或密码输入错误',
+            duration: 1,
         };
         notification.error(args);
-      };
+    };
+    async componentDidMount(){
+       const res = await Http.post('aaa').toPromise()
+       console.log(res)
+    
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         return <Layout className='login'>

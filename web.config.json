@@ -1,0 +1,22 @@
+{
+    "===========选择打包模式===========": "选择打包模式",
+    "envType": {
+      "dev": "dev",
+      "pro": "pro"
+    },
+    "===========基础host===========": "配置银行接口：比财2.0和老版本银行用bcHost；新版银行用bankHost",
+    "hostOptions": {
+      "开发dev/finsuitdev": "开发阶段环境",
+      "dev": {
+        "bankHost": "https://openapi-centretest5.bicai365.com/dev"
+      },
+      "测试test": "测试环境以前的test4",
+      "test": {
+        "bankHost": "https://openapi-centretest4.bicai365.com"
+      },
+      "生产pro/finsuit": "线上生产环境",
+      "pro": {
+        "bankHost": "https://bankcentre.bicai365.com"
+      }
+    }
+  }
