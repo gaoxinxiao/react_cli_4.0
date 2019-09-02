@@ -8,7 +8,7 @@
     "hostOptions": {
       "开发dev/finsuitdev": "开发阶段环境",
       "dev": {
-        "bankHost": "https://openapi-centretest5.bicai365.com/dev"
+        "bankHost": "https://openapi-centretest5.bicai365.com"
       },
       "测试test": "测试环境以前的test4",
       "test": {

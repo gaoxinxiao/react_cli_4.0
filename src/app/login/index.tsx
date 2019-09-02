@@ -3,42 +3,20 @@ import _ from 'lodash'
 import { Button, Layout, Row, Col, Form, Icon, Input, notification } from 'antd'
 import { observer } from 'mobx-react'
 import './style.scss'
-import Http from 'service/http'
 import Store from 'store/store'
-
 
 @observer
 class Login extends React.Component<any, any>{
     handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                await Store.User.login(values)
+                this.props.history.push('/')
             }
         });
-        this.props.history.push('/')
-        this.openNotification()
     };
-    openNotification = () => {
-        const args = {
-            message: '提示',
-            description:
-                '用户名或密码输入错误',
-            duration: 1,
-        };
-        notification.error(args);
-    };
-    async componentDidMount(){
-        try{
-            const res = await Http.post('aaa').toPromise()
-        }catch(e){
-            Store.Notification.error({
-                message:e.message,
-                description:e.url
-            })
-        }
-    
-    }
+
     render() {
         const { getFieldDecorator } = this.props.form;
         return <Layout className='login'>

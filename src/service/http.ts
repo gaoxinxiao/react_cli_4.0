@@ -1,9 +1,10 @@
 import Rx from 'rxjs'
 import lodash from 'lodash'
 import NProgress from 'nprogress';
+import Store from 'store/store'
+import {session} from 'utils/storage'
 
 const { envType, hostOptions } = require('../../web.config.json')
-
 
 class Http {
     /** 
@@ -29,8 +30,8 @@ class Http {
       * 获取 认证 token请求头
       */
     getHeaders() {
-        this.headers.token = window.localStorage.getItem('__token') || null;
-        return this.headers
+        // this.headers.token = Storage.get('__token') || null;
+        // return this.headers
     }
     /**
     * ajax Observable 管道
@@ -56,29 +57,25 @@ class Http {
             this.ToastLoding("start")
         });
         if (res.status == 200) {
-            // 判断是否统一数据格式，是走状态判断，否直接返回 response
-            if (res.response && res.response.status) {
-                switch (res.response.status) {
-                    case 200:
-                        return res.response.data;
-                        break;
-                    default:
-                        throw {
-                            url: res.request.url,
-                            request: res,
-                            message: res.response.message,
-                            response: res.response
-                        }
-                        return false
-                        break;
+            if (res.response && res.response.errCode==1) {
+                Store.Notification.error({
+                    message: res.response.errMsg,
+                    description: res.request.url
+                })
+                throw {
+                    url: res.request.url,
+                    message: res.response.errMsg,
+                    response: res.response
                 }
             }
             return res.response
         }
-        
+        Store.Notification.error({
+            message: res.message,
+            description: res.request.url
+        })
         throw {
             url: res.request.url,
-            request: res,
             message: res.message,
             response: false
         }
@@ -114,7 +111,7 @@ class Http {
             } else {
                 if (!isUrlWith) {
                     url = "/" + url;
-                } 
+                }
             }
         }
         return `${address}${url}${endStr}`

@@ -5,26 +5,26 @@ import { renderRoutes } from 'react-router-config'
 import Animate from 'rc-animate'
 import Loadable from 'react-loadable'
 import { Skeleton, Spin } from 'antd'
-import _ from 'lodash'
 import Login from 'app/login'
 import Business from 'app/business'
 import container from 'app/container'
 import Home from 'app/home'
 import ResetPwd from 'app/resetPwd'
+import Store from 'store/store'
+import _ from 'lodash'
 
 
 class Entrance extends React.Component<any, any>{
     render() {
-        //根据store的loading
-        if (false) {
+        if (Store.User.loading) {
             return <Spin size="large" tip="Loading..." spinning={true}>
                 <div style={{ height: "100vh" }} />
             </Spin>
         }
-        //正常登录的情况后期加判断
-        if (true) {
+        if (Store.User.isUser) {
             return <Business {...this.props} />
         }
+        return <Login {...this.props}></Login>
     }
 }
 
@@ -82,13 +82,13 @@ export default class RouterConfig extends React.Component<any, any>{
             return <div></div>;
         }
     };
-     /**
-     *
-     * @param Component 组件
-     * @param Animate 路由动画
-     * @param Loading 组件加载动画
-     * @param cssTranParams 路由动画参数
-     */
+    /**
+    *
+    * @param Component 组件
+    * @param Animate 路由动画
+    * @param Loading 组件加载动画
+    * @param cssTranParams 路由动画参数
+    */
     renderLoadable(Component, Animate = true, Loading = this.Loading, cssTranParams = { content: true, classNames: "fade" }) {
         if (!Loading) {
             Loading = (props) => {
@@ -172,6 +172,6 @@ export default class RouterConfig extends React.Component<any, any>{
 
 export class NoMatch extends React.Component<any, any> {
     render() {
-        return <Exception type="404" desc={<h3>无法匹配 <code>{this.props.location.pathname}页面</code></h3>}/>
+        return <Exception type="404" desc={<h3>无法匹配 <code>{this.props.location.pathname}页面</code></h3>} />
     }
 }

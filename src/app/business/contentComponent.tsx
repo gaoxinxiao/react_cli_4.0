@@ -2,8 +2,6 @@ import React from 'react'
 import { Layout, Breadcrumb } from 'antd';
 import { renderRoutes } from 'react-router-config'
 import { observer } from 'mobx-react'
-import { Redirect } from 'react-router-dom'
-
 const { Content } = Layout;
 
 

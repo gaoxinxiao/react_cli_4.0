@@ -7,7 +7,7 @@ interface notificationType {
 }
 
 class Notification {
-    error({ message = '提示', description = '', duration = 1 }: notificationType) {
+    error({ message = '提示', description = '', duration = 1.5 }: notificationType) {
         const args = {
             message,
             description,
@@ -15,7 +15,7 @@ class Notification {
         }
         notification.error(args);
     }
-    success({ message = '提示', description = '', duration = 1 }: notificationType) {
+    success({ message = '提示', description = '', duration = 1.5 }: notificationType) {
         const args = {
             message,
             description,

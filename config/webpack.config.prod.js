@@ -12,6 +12,8 @@ const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const dllFIle = require('../dll')
+
 
 module.exports = merge(baseConfig, {
     mode: "production",
@@ -54,18 +56,14 @@ module.exports = merge(baseConfig, {
         ]
     },
     plugins: [
-        new AddAssetHtmlWebpackPlugin([
-            {
-                filepath: path.resolve(__dirname, '../dll/lodash.dll.js') // 对应的 dll 文件路径
-            },
-            {
-                filepath: path.resolve(__dirname, '../dll/antd.dll.js') // 对应的 dll 文件路径
-            }
-        ]),
-        new webpack.DllReferencePlugin({
-            manifest: path.resolve(__dirname, '../dll/lodash-manifest.json'),
-            manifest: path.resolve(__dirname, '../dll/antd-manifest.json')
-        }),
+        new AddAssetHtmlWebpackPlugin([...Object.keys(dllFIle).map(item =>{
+            return {filepath: path.resolve(__dirname, `../dll/${item}.dll.js`)} // 对应的 dll 文件路径
+        })]),
+        new webpack.DllReferencePlugin(
+            ...Object.keys(dllFIle).map(item =>{
+                return {manifest: path.resolve(__dirname, `../dll/${item}-manifest.json`)} // 对应的 dll 文件路径
+            })
+        ),
         new MiniCssExtractPlugin({
             filename: "static/css/[name].css",
             chunkFilename: "static/css/[id].css"

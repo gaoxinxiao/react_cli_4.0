@@ -1,14 +1,14 @@
 import React from 'react'
 import { Layout, Icon, Row, Col, Dropdown, Menu } from 'antd';
 import './style.scss'
+import Store from './store'
+import {observer} from 'mobx-react'
 const { Header } = Layout;
 
-
+@observer
 class HeaderComponent extends React.Component<any, any>{
     state = {
-        visible: false,
-        user: "admin",
-        
+        visible: false
     };
     hide = () => {
         this.setState({
@@ -19,13 +19,16 @@ class HeaderComponent extends React.Component<any, any>{
     handleVisibleChange = visible => {
         this.setState({ visible });
     };
+    componentWillMount(){
+        Store.initData()
+    }
     render() {
         const menu = (
             <Menu>
-                <Menu.Item onClick={()=> this.props.history.push('/resetPwd')}>
+                <Menu.Item onClick={() => this.props.history.push('/resetPwd')}>
                     修改密码
                 </Menu.Item>
-                <Menu.Item onClick={()=> this.props.history.replace('/login')}>
+                <Menu.Item onClick={() => this.props.history.replace('/login')}>
                     退出
                 </Menu.Item>
             </Menu>
@@ -39,7 +42,7 @@ class HeaderComponent extends React.Component<any, any>{
                 <Col span={12} className='header_opertion'>
                     <Dropdown overlay={menu}>
                         <span className='ant-dropdown-link'>
-                            {this.state.user} <Icon type="down" />
+                            {Store.user} <Icon type="down" />
                         </span>
                     </Dropdown>
                 </Col>

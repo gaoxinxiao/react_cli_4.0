@@ -7,7 +7,9 @@
       "assets": ["assets/*"],
       "router": ["router/*"],
       "store": ["store/*"],
-      "service": ["service/*"]
+      "service": ["service/*"],
+      "api": ["api/*"],
+      "utils": ["utils/*"]
     },
     "module": "esnext",
     "target": "es5",
